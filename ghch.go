@@ -183,7 +183,7 @@ func (gh *Ghch) gitProg() string {
 }
 
 func (gh *Ghch) cmd(argv ...string) (string, error) {
-	arg := []string{"-C", gh.RepoPath}
+	arg := []string{"-C", gh.RepoPath, "-c", "log.showSignature=false"}
 	arg = append(arg, argv...)
 	cmd := exec.Command(gh.gitProg(), arg...)
 	cmd.Env = append(os.Environ(), "LANG=C")
